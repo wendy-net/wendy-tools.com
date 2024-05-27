@@ -1,0 +1,75 @@
+{
+	"$schema": "https://schemas.wp.org/wp/6.4/theme.json",
+	"version": 2,
+	"title": "Blue",
+	"settings": {
+		"color": {
+			"duotone": [],
+			"gradients": [
+				{
+					"gradient": "linear-gradient(-225deg,#231557,#44107a 29%,#ff1361 67%,#fff800)",
+					"name": "Fabled Sunset",
+					"slug": "fabled-sunset"
+				},
+				{
+					"gradient": "linear-gradient(180deg,rgb(18, 18, 18) 0%, rgb(34, 34, 34) 100%)",
+					"name": "Transition",
+					"slug": "transition"
+				}
+				,
+				{
+					"gradient": "linear-gradient(180deg, rgb(34, 34, 34) 0%,  rgb(29, 146, 255) 100%)",
+					"name": "Transition-Two",
+					"slug": "transition-two"
+				}
+			],
+			"palette": [
+				{
+					"color": "#fff",
+					"name": "White",
+					"slug": "white"
+				},
+				{
+					"color": "#000",
+					"name": "Black",
+					"slug": "black"
+				},
+				{
+					"color": "#1d92ff",
+					"name": "First",
+					"slug": "first"
+				},
+				{
+					"color": "#1d92ff",
+					"name": "Second",
+					"slug": "second"
+				},
+				{
+					"color": "#1d92ff",
+					"name": "Third",
+					"slug": "third"
+				},
+				{
+					"color": "#1d92ff",
+					"name": "Fourth",
+					"slug": "fourth"
+				},
+				{
+					"color": "#1d92ff",
+					"name": "Fifth",
+					"slug": "fifth"
+				},
+				{
+					"color": "#a6a6a6",
+					"name": "For Text",
+					"slug": "fortext"
+				},
+				{
+					"color": "#121212",
+					"name": "Dark",
+					"slug": "dark"
+				}
+			]
+		}
+	}
+}
