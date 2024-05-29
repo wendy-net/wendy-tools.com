@@ -4,66 +4,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>服务器地址列表</title>
-    <!--<script src="https://tool.oschina.net/js/jquery/jquery-1.7.2.js"></script>-->
-    
-    
-    </style>
-    <<script src="https://wendy.pub/copy/jquery.min.js"></script>
-    <!--<script src="https://gitee.com/wendyai77/jquery/raw/master/jquery.min.js"></script>-->
-    <!--<link rel="stylesheet" href="https://gitee.com/wendyai77/jquery/raw/master/prettify.css">-->
-    <!--<link rel="stylesheet" href="https://wendy.pub/copy/prettify.css">-->
-    <script src="https://wendy.pub/copy/prettify.js"></script>
-    <!--<script src="https://gitee.com/wendyai77/jquery/raw/master/prettify.js"></script>-->
-    <script>
-        function copy(str = '', callback) {
-            const element = document.createElement('textarea');
-            element.value = str;
-            element.addEventListener('copy', (e) => {
-                e.stopPropagation();
-                if (e.clipboardData) {
-                    e.preventDefault();
-                    e.clipboardData.clearData();
-                    e.clipboardData.setData('text/plain', str);
-                }
-            });
-            document.body.appendChild(element);
-            //选中需要复制的内容
-            element.select();
-            //执行复制
-            document.execCommand('copy');
-            //删除dom
-            element.remove();
-            if (typeof callback === 'function') {
-                callback();
-            }
-        }
-        jQuery(document).ready(function ($) {
-            let copyid = 0;
-            $('pre').each(function () {
-                copyid++;
-                $(this).attr('data-copyid', copyid).wrap('<div class="pre-wrapper"/>');
-                $(this).parent().css('margin', $(this).css('margin'));
-                $('<button class="copy-snippet">复制</button>').insertAfter($(this)).data('copytarget', copyid);
-            });
-            $('body').on('click', '.copy-snippet', function (ev) {
-                ev.preventDefault();
-                const $copyButton = $(this);
-                $pre = $(document).find('pre[data-copyid=' + $copyButton.data('copytarget') + ']');
-                if ($pre.length) {
-                    try {
-                        copy($pre[0].innerText);
-                        $copyButton.text('复制成功').prop('disabled', true);
-                    } catch (e) {
-                        $copyButton.text('复制失败').prop('disabled', true);
-                    }
-                    setTimeout(function () {
-                        $copyButton.text('复制').prop('disabled', false);
-                    }, 3000);
-                }
-            });
-        });
-    </script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>服务器地址列表</title>
+ 
+		<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+		<style>
+	        .content{
+	            width: 1000px;
+	            margin: 10px auto;
+	        }
+	        .content pre{
+	            position: relative;
+	            background-color: #f5f5f5;
+	            border: 1px solid #ccc;
+	            border-radius: 4px;
+	            padding: 10px;
+	        }
+	        pre .btn-pre-copy{
+	            -webkit-user-select: none;
+	            -moz-user-select: none;
+	            -ms-user-select: none;
+	            -khtml-user-select: none;
+	            user-select: none;
+	            position: absolute;
+	            top: 10px;
+	            right: 12px;
+	            font-size: 12px;
+	            line-height: 1;
+	            cursor: pointer;
+	            color: hsla(0,0%,54.9%,.8);
+	            transition: color .1s;
+	        }
+	        textarea{
+	            width: 100%;
+	        }
+</style>
 </head>
+ <script>
+			$(function(){
+			    //给每一串代码元素增加复制代码节点
+			    let preList = $(".content pre");
+			    // for (let pre of preList) {
+			    //     //给每个代码块增加上“复制代码”按钮
+			    //     let btn = $("<span class=\"btn-pre-copy\" onclick='preCopy(this)'>点击复制</span>");
+			    //     btn.prependTo(pre);
+			    // }
+				preList.each(function(){
+					let btn = $("<span class=\"btn-pre-copy\" onclick='preCopy(this)'>点击复制</span>");
+			        btn.prependTo($(this));
+				});
+			});
+	 
+			/**
+		    * 执行复制代码操作
+		    * @param obj
+		    */
+			function preCopy(obj) {
+			    //执行复制
+			    let btn = $(obj);
+			    let pre = btn.parent();
+			    //为了实现复制功能。新增一个临时的textarea节点。使用他来复制内容
+			    let temp = $("<textarea></textarea>");
+			    //避免复制内容时把按钮文字也复制进去。先临时置空
+			    btn.text("");
+			    temp.text(pre.text());
+			    temp.appendTo(pre);
+			    temp.select();
+			    document.execCommand("Copy");
+			    temp.remove();
+			    //修改按钮名
+			    btn.text("复制成功");
+			    //一定时间后吧按钮名改回来
+			    setTimeout(()=> {
+			        btn.text("点击复制");
+			    },1500);
+			}
+		</script>
 <style>
 /**
  * Table Pagination
@@ -138,18 +157,20 @@
         $('table').tablePagination({});
     });
 </script>
+<body>
+<div class="content">
 <div style="text-align: center;">
 <p>
 <table id="menuTable">
     <thead>
       <tr>
-        <td>服务器地址列表</td>
+        <td><h1>服务器地址列表</h1></td>
       </tr>
     </thead>
 <table id="menuTable">
     <thead>
       <tr>
-        <td>省</td><td>市</td><td>服务器地址<td>用户名</td><td>密码</td><td>备注</td>
+        <td><h3>省</h3></td><td><h3>市</h3></td><td><h3>服务器地址</h3><td><h3>&nbsp;&nbsp;&nbsp;用&nbsp;&nbsp;户&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp</h3></td><td><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密&nbsp;&nbsp;码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3></td><td><h3>备&nbsp;&nbsp;注</h3></td>
       </tr>
     </thead>
     <tbody>
@@ -225,7 +246,10 @@
       <tr style="display: table-row; ">
         <td>xxx</td><td>xxx</td><td><pre>xxxx</pre><td><pre>xxxx</pre></td><td><pre>xxxx</pre></td><td>/</td>
       </tr>
+</pre></div>
+</body>
     </tbody>
 </table>
-</p></div>
+</p>
+</div>
 </html>
