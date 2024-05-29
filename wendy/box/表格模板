@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>服务器地址列表</title>
+    <!--<script src="https://tool.oschina.net/js/jquery/jquery-1.7.2.js"></script>-->
+    <script src="https://gitee.com/wendyai77/jquery/raw/master/jquery.min.js"></script>
+    <script src="https://gitee.com/wendyai77/jquery/raw/master/prettify.js"></script>
+    <script>
+        function copy(str = '', callback) {
+            const element = document.createElement('textarea');
+            element.value = str;
+            element.addEventListener('copy', (e) => {
+                e.stopPropagation();
+                if (e.clipboardData) {
+                    e.preventDefault();
+                    e.clipboardData.clearData();
+                    e.clipboardData.setData('text/plain', str);
+                }
+            });
+            document.body.appendChild(element);
+            //选中需要复制的内容
+            element.select();
+            //执行复制
+            document.execCommand('copy');
+            //删除dom
+            element.remove();
+            if (typeof callback === 'function') {
+                callback();
+            }
+        }
+        jQuery(document).ready(function ($) {
+            let copyid = 0;
+            $('pre').each(function () {
+                copyid++;
+                $(this).attr('data-copyid', copyid).wrap('<div class="pre-wrapper"/>');
+                $(this).parent().css('margin', $(this).css('margin'));
+                $('<button class="copy-snippet">复制</button>').insertAfter($(this)).data('copytarget', copyid);
+            });
+            $('body').on('click', '.copy-snippet', function (ev) {
+                ev.preventDefault()；
+                const $复制按钮 = $(this);
+                $pre = $(document).find('pre[data-copyid=' + $copyButton.data('copytarget') + ']');
+                如果 ($pre.length) {
+                    尝试 {
+                        复制（$pre[0].innerText）；
+                        $copyButton.text('复制成功').prop('disabled', true);
+                    } 捕获（e）{
+                        $copyButton.text('复制失败').prop('disabled', true);
+                    }
+                    设置超时（函数（）{
+                        $copyButton.text('复制').prop('disabled', false);
+                    }, 3000);
+                }
+            });
+        });
+    </script>
+</head>
+<style>
+/**
+ * Table Pagination
+ */
+#menuTable td, #menuTable2 td { 
+  border: 1px solid black; 
+}
+  
+#menuTable, #menuTable2 { 
+  border: thick solid black; 
+  width: 100%; 
+}
+  
+#testTable, #testTable2 { 
+  width : 350px; 
+  margin-left: auto; 
+  margin-right: auto;
+}
+  
+.indent { 
+  margin-left: 30px 
+}
+  
+#demo2 { 
+  margin-left: auto; 
+  margin-right: auto; 
+  display: block;
+}
+  
+#tablePagination { 
+  background-color: #DCDCDC; 
+  font-size: 0.8em; 
+  padding: 0px 5px; 
+  height: 20px
+}
+  
+#tablePagination_paginater { 
+  margin-left: auto; 
+  margin-right: auto;
+}
+  
+#tablePagination img { 
+  padding: 0px 2px; 
+}
+  
+#tablePagination_perPage { 
+  float: left; 
+}
+  
+#tablePagination_paginater { 
+  float: right; 
+}
+  
+#testTable2 #tablePagination { 
+  background-color: #73AE2B; 
+  color: #980E30; 
+  font-size: 0.8em; 
+  padding: 0px 5px; 
+  height: 20px 
+}
+  
+#tablePaginationOptions li { 
+  font-variant: normal; 
+  list-style-type: disc; 
+  font-size: small;
+}
+</style>
+<script type="text/javascript" src="http://www.ostools.net/js/jquery/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="http://www.ostools.net/uploads/jquery/pagination/jquery-tablePagination.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $('table').tablePagination({});
+    });
+</script>
+<div style="text-align: center;">
+<p>
+<table id="menuTable">
+    <thead>
+      <tr>
+        <td>服务器地址列表</td>
+      </tr>
+    </thead>
+<table id="menuTable">
+    <thead>
+      <tr>
+        <td>省</td><td>市</td><td>服务器地址<td>用户名</td><td>密码</td><td>备注</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="display: table-row; ">
+        <td>直辖市</td><td>北京市</td><td><pre>beijing.wendy-ip.com</pre><td><pre>wdvpn</pre></td><td><pre>wd123</pre></td><td>/</td>
+      </tr>
+      <tr style="display: table-row; ">
+        <td>直辖市</td><td>上海市</td><td><pre>shanghai.wendy-ip.com</pre><td><pre>wdvpn</pre></td><td><pre>wd123</pre></td><td>/</td>
+      </tr>
+      <tr style="display: table-row; ">
+        <td>直辖市</td><td>天津市</td><td><pre>tianjin.wendy-ip.com</pre><td><pre>wdvpn</pre></td><td><pre>wd123</pre></td><td>/</td>
+      </tr style="display: table-row; ">
+      <tr style="display: table-row; ">
+        <td>直辖市</td><td>重庆市</td><td><pre>chongqing.wendy-ip.com</pre><td><pre>wdvpn</pre></td><td><pre>wd123</pre></td><td>/</td>
+      </tr>
+      <tr style="display: table-row; ">
+        <td>广东省</td><td>广州市</td><td><pre>guangzhou.wendy-ip.com</pre><td><pre>wdvpn</pre></td><td><pre>wd123</pre></td><td>/</td>
+      </tr>
+      <tr style="display: table-row; ">
+        <td>xxx</td><td>xxx</td><td><pre>xxxx</pre><td><pre>xxxx</pre></td><td><pre>xxxx</pre></td><td>/</td>
+      </tr>
+      <tr style="display: table-row; ">
+        <td>xxx</td><td>xxx</td><td><pre>xxxx</pre><td><pre>xxxx</pre></td><td><pre>xxxx</pre></td><td>/</td>
+      </tr>
+      <tr style="display: table-row;">
+        <td>xxx</td><td>xxx</td><td><pre>xxxx</pre><td><pre>xxxx</pre></td><td><pre>xxxx</pre></td><td>/</td>
+      </tr>
+      <tr style="display: table-row;">
+        <td>xxx</td><td>xxx</td><td><pre>xxxx</pre><td><pre>xxxx</pre></td><td><pre>xxxx</pre></td><td>/</td>
+      </tr>
+      <tr style="display: table-row;">
+        <td>xxx</td><td>xxx</td><td><pre>xxxx</pre><td><pre>xxxx</pre></td><td><pre>xxxx</pre></td><td>/</td>
+      </tr>
+      <tr style="display: table-row;">
+        <td>xxx</td><td>xxx</td><td><pre>xxxx</pre><td><pre>xxxx</pre></td><td><pre>xxxx</pre></td><td>/</td>
+      </tr>
+      <tr style="display: table-row;">
+        <td>xxx</td><td>xxx</td><td><pre>xxxx</pre><td><pre>xxxx</pre></td><td><pre>xxxx</pre></td><td>/</td>
+      </tr>
+      <tr style="display: table-row;">
+        <td>xxx</td><td>xxx</td><td><pre>xxxx</pre><td><pre>xxxx</pre></td><td><pre>xxxx</pre></td><td>/</td>
+      </tr>
+      <tr style="display: table-row;">
+        <td>xxx</td><td>xxx</td><td><pre>xxxx</pre><td><pre>xxxx</pre></td><td><pre>xxxx</pre></td><td>/</td>
+      </tr>
+      <tr style="display: table-row;">
+        <td>xxx</td><td>xxx</td><td><pre>xxxx</pre><td><pre>xxxx</pre></td><td><pre>xxxx</pre></td><td>/</td>
+      </tr>
+      <tr style="display: table-row;">
+        <td>xxx</td><td>xxx</td><td><pre>xxxx</pre><td><pre>xxxx</pre></td><td><pre>xxxx</pre></td><td>/</td>
+      </tr>
+      <tr style="display: table-row;">
+        <td>xxx</td><td>xxx</td><td><pre>xxxx</pre><td><pre>xxxx</pre></td><td><pre>xxxx</pre></td><td>/</td>
+      </tr>
+      <tr style="display: table-row;">
+        <td>xxx</td><td>xxx</td><td><pre>xxxx</pre><td><pre>xxxx</pre></td><td><pre>xxxx</pre></td><td>/</td>
+      </tr>
+      <tr style="display: table-row;">
+        <td>xxx</td><td>xxx</td><td><pre>xxxx</pre><td><pre>xxxx</pre></td><td><pre>xxxx</pre></td><td>/</td>
+      </tr>
+      <tr style="display: table-row;">
+        <td>xxx</td><td>xxx</td><td><pre>xxxx</pre><td><pre>xxxx</pre></td><td><pre>xxxx</pre></td><td>/</td>
+      </tr>
+      <tr style="display: table-row;">
+        <td>xxx</td><td>xxx</td><td><pre>xxxx</pre><td><pre>xxxx</pre></td><td><pre>xxxx</pre></td><td>/</td>
+      </tr>
+      <tr style="display: table-row;">
+        <td>xxx</td><td>xxx</td><td><pre>xxxx</pre><td><pre>xxxx</pre></td><td><pre>xxxx</pre></td><td>/</td>
+      </tr>
+      <tr style="display: table-row;">
+        <td>xxx</td><td>南昌市</td><td><pre>xxxx</pre><td><pre>xxxx</pre></td><td><pre>xxxx</pre></td><td>/</td>
+      </tr>
+      <tr style="display: table-row;">
+        <td>xxx</td><td>xxx</td><td><pre>xxxx</pre><td><pre>xxxx</pre></td><td><pre>xxxx</pre></td><td>/</td>
+      </tr>
+    </tbody>
+</table>
+</p></div>
+</html>
