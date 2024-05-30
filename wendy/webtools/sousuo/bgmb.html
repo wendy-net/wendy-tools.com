@@ -5,6 +5,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name='robots' content='noindex, nofollow'/>
         <title>表格模板 &#8211;Wendy-Network</title>
+        <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/htmleaf-demo.css">
+        <link rel="stylesheet" href="css/samples-styles.css">
+        <style type="text/css">
+	        td.alt { 
+	            background-color: #ffc;
+	             background-color: rgba(230, 127, 34, 0.2); 
+	         }
+        </style>
 <!--http://libs.baidu.com/jquery/2.1.4/jquery.min.js-->
 <script src="/wendy/webtools/jquery/js/jquery.min.js"></script>
 <body>
@@ -1936,6 +1945,23 @@
                             </div>
                         </div>
                     </nav>
+		</header>
+		<div class="htmleaf-content">
+			<div class="input-group">
+				<div class="input-group-addon">过滤条件</div>
+				<input class="form-control" type="search" id="input-filter" size="15" placeholder="输入过滤条件"></input>
+			</div>
+			<br>
+			<table class="">
+				<thead>
+					<tr>
+			                <th scope="col" title="President Number">#</th>
+			                <th scope="col">President</th>
+			                <th scope="col">Terms</th>
+			                <th scope="col">Tenure</th>
+			            </tr>
+				</thead>
+				<tbody>	
                     <p class="has-text-align-center has-luminous-vivid-amber-color has-text-color has-link-color has-product-heading-font-size wp-elements-29c150fe9e78c253f22b74295e7fe347">
                         <strong>服务器地址列表</strong>
                     </p>
@@ -2023,13 +2049,13 @@
                                     <td class="has-text-align-center" data-align="center">wdvpn</td>
                                     <td class="has-text-align-center" data-align="center">wd123</td>
                                     <td class="has-text-align-center" data-align="center">/</td>
-                                </tr>
+                                </tr></body>
                             </tbody>
                         </table>
                     </figure>
                 </div>
             </main>
-        </div>
+        </div></br>
         <script id="wp-block-template-skip-link-js-after">
             (function() {
                 var skipLinkTarget = document.querySelector('main'), sibling, skipLinkTargetID, skipLink;
